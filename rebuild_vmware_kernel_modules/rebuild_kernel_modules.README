@@ -1,0 +1,19 @@
+# David Backeberg
+# 20151006
+# my script assumes RHEL, but you can probably change to to work with other distros.
+
+I find it annoying when I upgrade a linux kernel, reboot,
+and VMWare cannot see the VMWare tools because the drivers don't work on the new kernel.
+
+Then you can ssh in, and manually rebuild the drivers.
+
+This improves that by taking the brainwork out.
+
+To use:
+
+1) sudo cp rebuild_kernel_modules.sh /etc/init.d/rebuild_kernel_modules
+2) sudo chkconfig --add rebuild_kernel_modules
+3) sudo chkconfig --levels 345 rebuild_kernel_modules on
+
+You're all set. Next time you upgrade a kernel and reboot, this script will fire,
+notice that you are missing the kernel modules, and will rebuild them.
